@@ -14,7 +14,7 @@
             
 #creating armor for character
    
-   class Armor:
+    class Armor:
         validArmor = {"plate":2,"chain":5,"leather":8,"none":10}
         
         def __init__(self,armorType):
@@ -43,7 +43,7 @@
         
 #fight method
    
-   def fight(self,other):
+    def fight(self,other):
         print(self.name,"attacks",other.name,"with a(n)",self.weapon)
         other.health -= self.weapon.damage
         print(self.name,"does",self.weapon.damage,"damage to",other.name)
@@ -88,6 +88,7 @@
         print(Amrmor.ac)
         
 #cast spell
+    
     def castSpell(self,spellName,other):
         if spellName == "Fireball":
             cost = 3
@@ -117,18 +118,21 @@
             print("Unknown spell name. Spell failed.")
         
 #fighter character class
+    
     class Fighter(RPGCharacter):
         maxHealth = 40
         maxSpell = 0
         validWeapon = {"dagger":4,"axe":6,"staff":6,"sword":10,"none":1}
 
 #fighter wielding
+    
     def wield(self,Weapon):
         if Weapon.weaponType in Fighter.validWeapon:
             self.weapon = Weapon
             print(self.name,"is now wielding a(n)",self.weapon)
 
 #put on armor for fighter
+    
     def putOnArmor(self,Armor):
         if Armor.ac != self.armor.ac:
             self.armor = Armor
