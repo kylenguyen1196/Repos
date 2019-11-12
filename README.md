@@ -1,43 +1,49 @@
 # Repos
 
 #creating a weapon for character
-class Weapon:
-    validWeapon = {"dagger":4,"axe":6,"staff":6,"sword":10,"none":1}
-    def __init__(self,weaponType):
-        self.weaponType = weaponType
-        self.damage = Weapon.validWeapon[weaponType]
+
+    class Weapon:
+        validWeapon = {"dagger":4,"axe":6,"staff":6,"sword":10,"none":1}
+        def __init__(self,weaponType):
+            self.weaponType = weaponType
+            self.damage = Weapon.validWeapon[weaponType]
             
-    def __str__(self):
-        if self.weaponType in Weapon.validWeapon:
-            return self.weaponType
+        def __str__(self):
+            if self.weaponType in Weapon.validWeapon:
+                return self.weaponType
             
 #creating armor for character
-class Armor:
-    validArmor = {"plate":2,"chain":5,"leather":8,"none":10}
-    def __init__(self,armorType):
-        self.armorType = armorType
-        self.ac = Armor.validArmor[armorType]
+   
+   class Armor:
+        validArmor = {"plate":2,"chain":5,"leather":8,"none":10}
         
-    def __str__(self):
-        if self.armorType in Armor.validArmor:
-            return self.armorType
+        def __init__(self,armorType):
+            self.armorType = armorType
+            self.ac = Armor.validArmor[armorType]
+        
+        def __str__(self):
+            if self.armorType in Armor.validArmor:
+                return self.armorType
         
 #class RPGCharacter
-class RPGCharacter:
-    def __init__(self,name):
-        self.name = name
-        self.armor = Armor("none")
-        self.weapon = Weapon("none")
-        self.health = self.maxHealth
-        self.spell = self.maxSpell
+
+    class RPGCharacter:
+        def __init__(self,name):
+            self.name = name
+            self.armor = Armor("none")
+            self.weapon = Weapon("none")
+            self.health = self.maxHealth
+            self.spell = self.maxSpell
 
 #check for defeat
+    
     def checkForDefeat(self):
         if self.health <= 0:
             print(self.name,"has been defeated!")
         
 #fight method
-    def fight(self,other):
+   
+   def fight(self,other):
         print(self.name,"attacks",other.name,"with a(n)",self.weapon)
         other.health -= self.weapon.damage
         print(self.name,"does",self.weapon.damage,"damage to",other.name)
@@ -55,12 +61,14 @@ class RPGCharacter:
         return outStr
 
 #wizard character class     
-class Wizard(RPGCharacter):
-    maxHealth = 16
-    maxSpell = 20
-    validWeapon = {"dagger":4,"staff":6,"none":1}
+
+    class Wizard(RPGCharacter):
+        maxHealth = 16
+        maxSpell = 20
+        validWeapon = {"dagger":4,"staff":6,"none":1}
             
 #wizard wielding
+    
     def wield(self,Weapon):
         if Weapon.weaponType in Wizard.validWeapon:
             self.weapon = Weapon
@@ -69,6 +77,7 @@ class Wizard(RPGCharacter):
             print("Weapon not allowed for this character class.")
 
 #put on armor for wizard
+    
     def putOnArmor(self,Armor):
         if Armor.ac != self.armor.ac:
             print("Armor not allowed for this character class")
@@ -108,10 +117,10 @@ class Wizard(RPGCharacter):
             print("Unknown spell name. Spell failed.")
         
 #fighter character class
-class Fighter(RPGCharacter):
-    maxHealth = 40
-    maxSpell = 0
-    validWeapon = {"dagger":4,"axe":6,"staff":6,"sword":10,"none":1}
+    class Fighter(RPGCharacter):
+        maxHealth = 40
+        maxSpell = 0
+        validWeapon = {"dagger":4,"axe":6,"staff":6,"sword":10,"none":1}
 
 #fighter wielding
     def wield(self,Weapon):
